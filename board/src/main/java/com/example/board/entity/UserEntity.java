@@ -1,5 +1,6 @@
 package com.example.board.entity;
 
+import com.example.board.dto.SignUpDto;
 import lombok.*;
 import org.springframework.web.bind.annotation.Mapping;
 
@@ -34,6 +35,16 @@ public class UserEntity {
 
     @Column(columnDefinition = "TEXT")
     private String userProfile;
+
+    public UserEntity(SignUpDto dto) {
+        this.userEmail = dto.getUserEmail();
+        this.userPassword = dto.getUserPassword();
+        this.userNickname = dto.getUserNickName();
+        this.userPhoneNumber = dto.getUserPhoneNumber();
+        this.userAddress = dto.getUserAddress() + " " + dto.getUserAddressDetail();
+
+    }
+
 
 
 }
